@@ -11,7 +11,26 @@ export default {
   props: ['id', 'name', 'memberCount'],
   computed: {
     teamMembersLinks() {
-      return '/teams/' + this.id;
+      // return '/teams/' + this.id;
+      /* return {
+        path: '/teams/' + this.id
+      };
+      */
+      /* 
+      Note: can use in programmatically 
+      this.$router.push({
+              name: 'team-members',
+              params: {
+                teamId: this.id
+              }
+            })
+      */
+      return {
+        name: 'team-members',
+        params: {
+          teamId: this.id
+        }
+      };
     }
   }
 };

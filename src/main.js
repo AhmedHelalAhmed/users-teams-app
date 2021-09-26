@@ -15,12 +15,14 @@ const router = createRouter({
     },
 
     {
+      name: 'teams',
       path: '/teams',
       component: TeamsList,
       /* alias: '/' // url does not change redirect is better */
       children: [
         // child route for another root route
         {
+          name: 'team-members',
           path: ':teamId',
           component: TeamMembers,
           props: true
