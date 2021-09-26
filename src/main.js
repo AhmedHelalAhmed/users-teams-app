@@ -19,7 +19,8 @@ const router = createRouter({
 
     {
       path: '/teams/:teamId',
-      component: TeamMembers
+      component: TeamMembers,
+      props: true
     }
   ],
   linkActiveClass: 'active' // to change active class to active
