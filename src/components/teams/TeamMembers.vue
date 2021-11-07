@@ -32,6 +32,7 @@ export default {
     // this.$route.path;// /teams/t1
     // this.LoadTeamMembers(this.$route);
     this.LoadTeamMembers(this.teamId);
+    console.log(this.$route.query);// to get queries
   },
   methods: {
     LoadTeamMembers(teamId) {

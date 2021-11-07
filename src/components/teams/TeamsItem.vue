@@ -1,8 +1,8 @@
 <template>
   <li>
     <h3>{{ name }}</h3>
-    <div class="team-members">{{ memberCount }} Members</div>
-    <router-link :to="teamMembersLinks">View Members</router-link>
+    <div class='team-members'>{{ memberCount }} Members</div>
+    <router-link :to='teamMembersLinks'>View Members</router-link>
   </li>
 </template>
 
@@ -30,6 +30,10 @@ export default {
         name: 'team-members',
         params: {
           teamId: this.id
+        },
+        // query are optional bu natural not needed to add to main.js
+        query: {
+          sort: 'asc'
         }
       };
     }
