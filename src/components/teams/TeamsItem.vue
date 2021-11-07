@@ -12,11 +12,12 @@ export default {
   computed: {
     teamMembersLinks() {
       // return '/teams/' + this.id;
-      /* return {
+      /*
+      return {
         path: '/teams/' + this.id
       };
       */
-      /* 
+      /*
       Note: can use in programmatically 
       this.$router.push({
               name: 'team-members',
