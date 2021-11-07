@@ -41,6 +41,13 @@ const router = createRouter({
       components: {
         default: UsersList,
         footer: UsersFooter
+      },
+      beforeEnter(to, from, next) {
+        // route config level
+        // before enter the route
+        console.log('users beforeEnter');
+        console.log(to, from);
+        next();
       }
     },
 
@@ -63,6 +70,7 @@ const router = createRouter({
 
 // guards
 router.beforeEach(function(to, from, next) {
+  // global level
   console.log('Global beforeEach');
   console.log(to, from);
   // next(false);// cancel the navigation

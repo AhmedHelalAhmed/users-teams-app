@@ -3,13 +3,13 @@
     <h2>{{ teamName }}</h2>
     <ul>
       <user-item
-        v-for="member in members"
-        :key="member.id"
-        :name="member.fullName"
-        :role="member.role"
+        v-for='member in members'
+        :key='member.id'
+        :name='member.fullName'
+        :role='member.role'
       ></user-item>
     </ul>
-    <router-link to="/teams/t2">GO to team2</router-link>
+    <router-link to='/teams/t2'>GO to team2</router-link>
   </section>
 </template>
 
@@ -49,6 +49,13 @@ export default {
       this.members = selectedMemebers;
       this.teamName = selectedTeam.name;
     }
+  },
+  // alternative for watching teamId
+  beforeRouteUpdate(to, from, next) {
+    console.log('TeamMembers component beforeRouteUpdate');
+    console.log(to, from);
+    // this.LoadTeamMembers(to.params.teamId); // we made this by watcher below no need to make it twise
+    next();
   },
   watch: {
     /*

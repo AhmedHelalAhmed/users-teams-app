@@ -1,11 +1,11 @@
 <template>
-  <button @click="confirmInput">Confirm</button>
+  <button @click='confirmInput'>Confirm</button>
   <ul>
     <user-item
-      v-for="user in users"
-      :key="user.id"
-      :name="user.fullName"
-      :role="user.role"
+      v-for='user in users'
+      :key='user.id'
+      :name='user.fullName'
+      :role='user.role'
     ></user-item>
   </ul>
 </template>
@@ -25,6 +25,12 @@ export default {
       // this.$router.back();
       // this.$router.forward();
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    // component level
+    // called before the navigation confirmed
+    console.log('UsersList component beforeRouteEnter', to, from);
+    next();
   }
 };
 </script>
