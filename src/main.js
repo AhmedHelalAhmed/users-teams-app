@@ -88,6 +88,15 @@ router.beforeEach(function(to, from, next) {
    */
 });
 
+// run once the navigation confirmed
+router.afterEach(function(to, from) {
+  // sending analytics data
+  // log navigation and when user changes pages
+  console.log('Global afterEach');
+  console.log(to, from);
+
+});
+
 const app = createApp(App);
 
 app.use(router);
