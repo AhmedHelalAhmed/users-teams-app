@@ -50,8 +50,8 @@ const router = createRouter({
     }
   ],
   linkActiveClass: 'active', // to change active class to active
-  scrollBehavior(to, from, savedPosition) {
-    console.log(to, from, savedPosition);
+  scrollBehavior(_, _2, savedPosition) {
+    // console.log(to, from, savedPosition);// to =_ , _2 = from
     // when click back go to the position where you were
     if (savedPosition) {
       return savedPosition;
@@ -59,6 +59,25 @@ const router = createRouter({
     // when click any link go to the top of the page
     return { left: 0, top: 0 };
   }
+});
+
+// guards
+router.beforeEach(function(to, from, next) {
+  console.log('Global beforeEach');
+  console.log(to, from);
+  // next(false);// cancel the navigation
+  next(true);// allow the navigation by default the true no need to pass it
+  // next('/users');
+  /*
+  if (to.name === 'team-members') {
+    next();
+  } else {
+    next({
+      name: 'team-members',
+      params: { teamId: 't2' }
+    });
+  }
+   */
 });
 
 const app = createApp(App);
