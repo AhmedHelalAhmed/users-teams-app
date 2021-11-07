@@ -1,5 +1,6 @@
 <template>
   <button @click='confirmInput'>Confirm</button>
+  <button @click='saveChanges'>Save changes</button>
   <ul>
     <user-item
       v-for='user in users'
@@ -18,12 +19,18 @@ export default {
     UserItem
   },
   inject: ['users'],
+  data() {
+    return { changeSaved: false };
+  },
   methods: {
     confirmInput() {
       // do some logic then navigate to some component
       this.$router.push('/teams');
       // this.$router.back();
       // this.$router.forward();
+    },
+    saveChanges() {
+      this.changeSaved = true;
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -31,6 +38,21 @@ export default {
     // called before the navigation confirmed
     console.log('UsersList component beforeRouteEnter', to, from);
     next();
+  },
+  unmounted() {
+    // this runs after the navigation confirmed
+    console.log('unmounted');
+  },
+  beforeRouteLeave(to, from, next) {
+    // this have the high priority
+    console.log('UsersList component beforeRouteLeave');
+    console.log(to, from);
+    if (this.changeSaved) {
+      next();
+    } else {
+      const userWantsToLeave = confirm('Are you sure? You got unsaved changes!');
+      next(userWantsToLeave);
+    }
   }
 };
 </script>
